@@ -19,7 +19,7 @@
             </div>
             <h2>Фильмы</h2>
         </div>
-        <div class="movies" nv-scope="movies" nv-scope-current="true">
+        <div id="movies" class="movies" nv-scope="movies" nv-scope-current="true">
             
         </div>
     </div>
@@ -64,7 +64,7 @@
         }
 
         function showMovies(arr) {
-            const moviesEl = document.querySelector(".movies")
+            const moviesEl = document.getElementById("movies")
             /*  data.results.forEach(movie => {
                  const movieEl = document.createElement('div')
                  movieEl.className = "nv-el";

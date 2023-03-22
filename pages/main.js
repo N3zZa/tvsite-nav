@@ -32,7 +32,7 @@ xhr.onreadystatechange = function () {
 };
 
 function showMovies(data) {
-    const moviesEl = document.querySelector(".movies")
+    const moviesEl = document.getElementById("movies");
    /*  data.results.forEach(movie => {
         const movieEl = document.createElement('div')
         movieEl.className = "nv-el";
