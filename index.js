@@ -88,7 +88,7 @@ app.get("/", (req, res) => {
 });
 
 app.get('/public/Anime', (req, res) => {
-    res.sendFile(path.join(__dirname + '/views/Anime.html'));
+    res.sendFile(path.join(__dirname + '/public/views/Anime.html'));
 });
 
 app.listen(8080);
