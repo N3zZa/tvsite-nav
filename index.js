@@ -82,9 +82,6 @@ app.use(express.static(__dirname));
 
 const path = require("path");
 
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname + "/index.html"));
-});
 
 app.get("/views/Anime", (req, res) => {
   res.sendFile(path.join(__dirname + "/views/Anime.html"));
