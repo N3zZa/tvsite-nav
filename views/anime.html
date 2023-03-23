@@ -11,39 +11,21 @@
 </head>
 
 <body>
-    <div class="app">
-        <div nv-scope="movies" nv-scope-current="true" class="header">
-            <img id="arrowback" nv-el onclick="window.history.back()" width="50" src="../../images/arrowBack.svg"
-                alt="arrowback">
-            <a id="imglogo" nv-el href="/">
-                <img width="75" src="../../images/UconCinemaLogo.png" alt="logoimg">
-            </a>
-            <div id="categories" nv-el class="categories">
-                <h1>Категории</h1>
-                <ul id="categorylist" class="category-list">
-                    <a href="../pages/Films.html">
-                        <li nv-el>Фильмы</li>
-                    </a>
-                    <a href="../pages/Serials.html">
-                        <li nv-el>Сериалы</li>
-                    </a>
-                    <a href="../pages/Cartoons.html">
-                        <li nv-el>Мультфильмы</li>
-                    </a>
-                    <a href="../pages/Premieres.html">
-                        <li nv-el>Премьеры</li>
-                    </a>
-                    <a href="../pages/Compilations.html">
-                        <li nv-el>Подборки</li>
-                    </a>
-                </ul>
-            </div>
-            <h2>Аниме</h2>
-        </div>
-        <div id="movies" class="movies" nv-scope="movies">
-            
-        </div>
+    
+    <div id="app" class="app">
+        
     </div>
+    <script>
+        const response = fetch('/Anime')
+            .then(function (response) {
+                return response.text()
+            })
+            .then(data => document.getElementById('app').innerHTML = data)
+            .catch(function (err) {
+                console.log('Failed to fetch page: ', err);
+            });
+            
+    </script>
     <script type="text/javascript">
         let arrowBack = document.getElementById('arrowback');
         let imglogo = document.getElementById('imglogo');
