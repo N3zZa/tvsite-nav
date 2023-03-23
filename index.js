@@ -80,15 +80,7 @@ let API_URL = `https://bazon.cc/api/json?token=${API_KEY}&type=film&page=2&cat=Ð
 
 app.use(express.static(__dirname + "/public"));
 
-const path = require("path");
 
-app.get("/public/", (req, res) => {
-  res.sendFile(path.join(__dirname + "/public/index.html"));
-});
-
-app.get("/public/Anime", (req, res) => {
-  res.sendFile(path.join(__dirname + "/public/views/Anime.html"));
-});
 
 app.listen(8080);
 console.log("Server is listening on port 8080");
