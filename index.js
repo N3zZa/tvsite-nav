@@ -86,7 +86,9 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname + "/index.html"));
 });
 
-
+app.get("/views/Anime", (req, res) => {
+  res.sendFile(path.join(__dirname + "/views/Anime.html"));
+});
 
 app.listen(8080);
 console.log("Server is listening on port 8080");
