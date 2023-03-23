@@ -86,7 +86,7 @@ app.get("/public/", (req, res) => {
   res.sendFile(path.join(__dirname + "/public/index.html"));
 });
 
-app.get("/public/views/Anime", (req, res) => {
+app.get("/public/Anime", (req, res) => {
   res.sendFile(path.join(__dirname + "/public/views/Anime.html"));
 });
 
