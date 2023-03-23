@@ -1,6 +1,7 @@
 const express = require("express");
 const fetch = require("node-fetch");
 var app = express();
+const path = require("path");
 
 // set the view engine to ejs
 app.set("view engine", "ejs");
@@ -69,6 +70,7 @@ let API_URL = `https://bazon.cc/api/json?token=${API_KEY}&type=film&page=2&cat=�
 `;
 
      app.get("/Anime", (req, res) => {
+        res.sendFile(path.join(__dirname + "/views/Anime.html"));
        res.send(message); // Отправка ответа в виде HTML
      });
    } catch (error) {
@@ -80,12 +82,12 @@ let API_URL = `https://bazon.cc/api/json?token=${API_KEY}&type=film&page=2&cat=�
 
 app.use(express.static(__dirname));
 
-const path = require("path");
 
 
-app.get("/views/Anime", (req, res) => {
-  res.sendFile(path.join(__dirname + "/views/Anime.html"));
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname + "/index.html"));
 });
+
 
 app.listen(8080);
 console.log("Server is listening on port 8080");
