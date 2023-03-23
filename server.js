@@ -79,8 +79,10 @@ let API_URL = `https://bazon.cc/api/json?token=${API_KEY}&type=film&page=2&cat=Ð
  getMovies();
 
 app.use(express.static(__dirname));
-
+app.use(express.static("views"));
 
 
 app.listen(8080);
 console.log("Server is listening on port 8080");
+
+module.exports = app;
