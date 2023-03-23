@@ -80,15 +80,10 @@ let API_URL = `https://bazon.cc/api/json?token=${API_KEY}&type=film&page=2&cat=Ð
 
 app.use(express.static('public'));
 
-const path = require('path');
+const path = require("path");
 
-
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname + "/public/index.html"));
-});
-
-app.get('/public/Anime', (req, res) => {
-    res.sendFile(path.join(__dirname + "/public/views/Anime.html"));
+app.get("/public/views/Anime", (req, res) => {
+  res.sendFile(path.join(__dirname + "/views/Anime.html"));
 });
 
 app.listen(8080);
