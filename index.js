@@ -3,10 +3,9 @@ const fetch = require("node-fetch");
 var app = express();
 const path = require("path");
 
-// set the view engine to ejs
-app.set("view engine", "ejs");
+app.use(express.static(__dirname + "/public/"));
 
-// use res.render to load up an ejs view file
+
 const API_KEY = "a7e00fb04d6aee85906efd13422fc24a";
 let API_URL = `https://bazon.cc/api/json?token=${API_KEY}&type=film&page=2&cat=аниме`;
 
@@ -19,7 +18,7 @@ let API_URL = `https://bazon.cc/api/json?token=${API_KEY}&type=film&page=2&cat=�
    try {
     const commits = await fetchData;
       let items = commits.results.map((element) => 
-      `<div class='movieitem'>
+      `<div nv-el class='movieitem'>
         <img src='${element.info.poster}' alt='imglogo' />
         <h3>${element.info.rus}</h3>
         <p>${element.info.year}</p>
@@ -34,7 +33,7 @@ let API_URL = `https://bazon.cc/api/json?token=${API_KEY}&type=film&page=2&cat=�
  async function getMovies() {
    try {
      const movies = await showMovies();
-     
+     const moviesItems = movies.join('')
      // используем movies в шаблонной строке:
      const message = `<div nv-scope="movies" nv-scope-current="true" class="header">
         <img id="arrowback" nv-el onclick="window.history.go(-1)" width="50" src="../../images/arrowBack.svg"
@@ -65,14 +64,15 @@ let API_URL = `https://bazon.cc/api/json?token=${API_KEY}&type=film&page=2&cat=�
         <h2>Аниме</h2>
     </div>
     <div id="movies" class="movies" nv-scope="movies">
-    ${movies}
+    ${moviesItems}
     </div>
 `;
 
-     app.get("/Anime", (req, res) => {
-        res.sendFile(path.join(__dirname + "/views/Anime.html"));
+     app.get("/anime", (req, res) => {
+       res.sendFile(path.join(__dirname + "/public/views/anime.html"));
        res.send(message); // Отправка ответа в виде HTML
      });
+
    } catch (error) {
      console.error(error);
    }
@@ -80,16 +80,13 @@ let API_URL = `https://bazon.cc/api/json?token=${API_KEY}&type=film&page=2&cat=�
 
  getMovies();
 
-app.use(express.static(__dirname));
 
-
-
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname + "/index.html"));
+app.get("/public/", (req, res) => {
+  res.sendFile(path.join(__dirname + "/public/index.html"));
 });
 
-
-app.listen(8080);
-console.log("Server is listening on port 8080");
+const port = process.env.PORT || 3000;
+app.listen(port);
+console.log(`Server is listening on port ${port}`);
 
 module.exports = app;
